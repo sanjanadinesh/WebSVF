@@ -14,8 +14,8 @@ The new feature allows users to communicate with OpenAI's GPT 3.5-Turbo engine, 
 # Installation guide for WebSVF
 Note: Installation instructions are for linux or windows environments.
 
-For linux: 
-## 1. Install Nodejs 15 and other dependancies 
+## For linux: 
+### 1. Install Nodejs 15 and other dependancies 
 ```
 sudo apt install nodejs@15
 sudo apt-get install clang cmake gcc g++ doxygen graphviz zlib1g-dev unzip libtinfo5

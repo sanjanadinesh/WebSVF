@@ -22,28 +22,28 @@ sudo apt-get install clang cmake gcc g++ doxygen graphviz zlib1g-dev unzip libti
 ```
 https://www.digitalocean.com/community/tutorials/how-to-install-node-js-on-ubuntu-20-04
 
-## 2. Install Angular
+### 2. Install Angular
 ```
 cd ClientApp \
 sudo npm install -g @angular/cli
 ```
 https://angular.io/guide/setup-local
 
-## 3. Clone this repo
+### 3. Clone this repo
 ```
 git clone https://github.com/Re-Tails/CapstoneProject.git
 ```
 
-## 4. Install Dotnet
+### 4. Install Dotnet
 
-### Add the Microsoft package signing key
+#### Add the Microsoft package signing key
 ```
 wget https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb -O packages-microsoft-prod.deb
 sudo dpkg -i packages-microsoft-prod.deb
 rm packages-microsoft-prod.deb
 ```
 
-### Install the SDK
+#### Install the SDK
 ```
 sudo apt-get update; \
   sudo apt-get install -y apt-transport-https && \
@@ -51,7 +51,7 @@ sudo apt-get update; \
   sudo apt-get install -y dotnet-sdk-3.1
 ```
 
-### Install the runtime
+#### Install the runtime
 ```
 sudo apt-get update; \
   sudo apt-get install -y apt-transport-https && \
@@ -60,34 +60,61 @@ sudo apt-get update; \
 ```
 https://docs.microsoft.com/en-au/dotnet/core/install/linux-ubuntu#2004-
 
-### If the above commands do not work, you can manually download Dotnet 3.1 here
+## For Windows: 
+
+### 1. Install Nodejs 15
+Download and install nvm-windows from its GitHub repository: https://github.com/coreybutler/nvm-windows/releases
+By default, nvm-windows installs to C:\Users\YOUR_USERNAME\AppData\Roaming\nvm. Confirm this directory exists, and within it, you should see nvm.exe.
+Add 'nvm' to your environment variables PATH if it doesn't already exist. Make sure to add the version at the end of the path as well e.g. C:\Users\YOUR_USERNAME\AppData\Roaming\nvm\vv15.0.0
+Then run: 
+```
+nvm install 15.0.0
+nvm use 15.0.0
+node -v
+```
+
+### 2. Install Angular
+You can globally run this: 
+```
+npm install -g @angular/cli
+```
+
+### 3. Clone this repo
+This step is the same as for linux.
+```
+git clone https://github.com/Re-Tails/CapstoneProject.git
+```
+
+### 4. Install Dotnet
+
+#### You can manually download Dotnet 3.1 from here.
 
 You can download any version as long as it is 3.1 version of SDK.
 
 https://dotnet.microsoft.com/en-us/download/dotnet/3.1
 
-After downloading, go to downloads folder and run the following commands.
+Ensure that the correct NuGet sources are enabled by opening a terminal and running the following:
 ```
-cd
-cd Downloads
-mkdir -p $HOME/dotnet && tar zxf dotnet-sdk-3.1.302-win-x64.exe -C $HOME/dotnet
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
+dotnet nuget list source
 ```
-
-If you have downloaded manually, you will need to run these commands everytime the machine is restarted (or add these commands to appropriate source file to avoid copy and pasting this command when computer restarts)
+If the official NuGet source is not listed, add it with:
 ```
-export DOTNET_ROOT=$HOME/dotnet
-export PATH=$PATH:$HOME/dotnet
+dotnet nuget add source --name nuget.org https://api.nuget.org/v3/index.json
+```
+Run the following command from the CapstoneProject repo folder:
+```
+dotnet restore
 ```
 
-## 7. Update the app
+## The following steps can be followed regardless of whether the OS is Linux or Windows
+
+### 7. Update the app
 ```
 cd  ClientApp \
 npm install \
 npm run start //note: this will only run the Client App
 ```
-## 6. Run the app
+### 6. Run the app
 Run the following command from the CapstoneProject repo folder:
 ```
 dotnet run
